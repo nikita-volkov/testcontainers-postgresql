@@ -2,19 +2,32 @@ module TestcontainersPostgresql.Configs.Distro where
 
 import Data.Function
 import Data.Text (Text)
-import qualified Data.Text.Lazy as Text.Lazy
 import qualified TestContainers
-import qualified TestContainers.Hspec
 import Prelude
 
 data Distro
-  = Distro17
-  | Distro9
+  = Distro9
+  | Distro10
+  | Distro11
+  | Distro12
+  | Distro13
+  | Distro14
+  | Distro15
+  | Distro16
+  | Distro17
   deriving stock (Show, Eq)
 
 toTag :: Distro -> Text
-toTag Distro17 = "postgres:17"
-toTag Distro9 = "postgres:9"
+toTag = \case
+  Distro9 -> "postgres:9"
+  Distro10 -> "postgres:10"
+  Distro11 -> "postgres:11"
+  Distro12 -> "postgres:12"
+  Distro13 -> "postgres:13"
+  Distro14 -> "postgres:14"
+  Distro15 -> "postgres:15"
+  Distro16 -> "postgres:16"
+  Distro17 -> "postgres:17"
 
 toToImage :: Distro -> TestContainers.ToImage
 toToImage = TestContainers.fromTag . toTag

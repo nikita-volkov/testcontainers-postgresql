@@ -1,15 +1,16 @@
 module TestcontainersPostgresql
   ( Configs.Config.Config (..),
     Configs.Distro.Distro (..),
+    Configs.Auth.Auth (..),
     run,
   )
 where
 
 import Data.Function
 import Data.Text (Text)
-import qualified Data.Text.Lazy as Text.Lazy
 import qualified TestContainers
 import qualified TestContainers.Hspec
+import qualified TestcontainersPostgresql.Configs.Auth as Configs.Auth
 import qualified TestcontainersPostgresql.Configs.Config as Configs.Config
 import qualified TestcontainersPostgresql.Configs.Distro as Configs.Distro
 import Prelude

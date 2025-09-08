@@ -91,6 +91,7 @@ library
     TestcontainersPostgresql
 
   other-modules:
+    TestcontainersPostgresql.Configs.Auth
     TestcontainersPostgresql.Configs.Config
     TestcontainersPostgresql.Configs.Distro
 
