@@ -2,6 +2,7 @@ module TestcontainersPostgresql.Configs.Auth where
 
 import Data.Function
 import Data.Text (Text)
+import qualified Data.Text as Text
 import qualified TestContainers
 import Prelude
 
@@ -23,6 +24,15 @@ toEnvs = \case
     [ ("POSTGRES_HOST_AUTH_METHOD", "trust")
     ]
   CredentialsAuth user password ->
-    [ ("POSTGRES_USER", user),
-      ("POSTGRES_PASSWORD", password)
+    [ ("POSTGRES_USER", prepareValue user),
+      ("POSTGRES_PASSWORD", prepareValue password)
     ]
+  where
+    prepareValue :: Text -> Text
+    prepareValue =
+      Text.concatMap
+        ( \case
+            '\'' -> "\\'"
+            '\\' -> "\\\\"
+            c -> Text.singleton c
+        )
