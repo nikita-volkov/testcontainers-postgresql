@@ -30,9 +30,11 @@ toEnvs = \case
   where
     prepareValue :: Text -> Text
     prepareValue =
-      Text.concatMap
-        ( \case
-            '\'' -> "\\'"
-            '\\' -> "\\\\"
-            c -> Text.singleton c
-        )
+      mappend "."
+        . flip mappend "'"
+        . Text.concatMap
+          ( \case
+              '\'' -> "\\'"
+              '\\' -> "\\\\"
+              c -> Text.singleton c
+          )
