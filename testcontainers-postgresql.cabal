@@ -3,7 +3,6 @@ name: testcontainers-postgresql
 version: 0
 category: PostgreSQL, Codecs
 synopsis: Testcontainers integration for PostgreSQL
-
 homepage: https://github.com/nikita-volkov/testcontainers-postgresql
 bug-reports: https://github.com/nikita-volkov/testcontainers-postgresql/issues
 author: Nikita Volkov <nikita.y.volkov@mail.ru>
@@ -90,6 +89,10 @@ library
   hs-source-dirs: src/library
   exposed-modules:
     TestcontainersPostgresql
+
+  other-modules:
+    TestcontainersPostgresql.Configs.Config
+    TestcontainersPostgresql.Configs.Distro
 
   build-depends:
     base >=4.11 && <5,
