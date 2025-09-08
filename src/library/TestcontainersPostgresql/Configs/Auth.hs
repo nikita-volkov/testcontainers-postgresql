@@ -7,7 +7,11 @@ import Prelude
 
 data Auth
   = TrustAuth
-  | CredentialsAuth Text Text
+  | CredentialsAuth
+      -- | User.
+      Text
+      -- | Password.
+      Text
   deriving stock (Show, Eq)
 
 updateContainerRequest :: Auth -> TestContainers.ContainerRequest -> TestContainers.ContainerRequest
