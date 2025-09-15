@@ -17,7 +17,7 @@ data Distro
   | Distro16
   | Distro17
   | Distro18
-  deriving stock (Show, Eq, Enum, Bounded)
+  deriving stock (Show, Eq, Enum, Bounded, Ord)
 
 toTag :: Distro -> Text
 toTag = \case
