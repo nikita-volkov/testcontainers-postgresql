@@ -8,13 +8,13 @@ import qualified TestcontainersPostgresql.Configs.Auth as Configs.Auth
 import Prelude
 
 data Config = Config
-  { forwardLogs :: Bool,
-    tagName :: Text,
-    auth :: Configs.Auth.Auth
+  { tagName :: Text,
+    auth :: Configs.Auth.Auth,
+    forwardLogs :: Bool
   }
 
 toContainerRequest :: Config -> TestContainers.ContainerRequest
-toContainerRequest (Config forwardLogs tagName auth) =
+toContainerRequest (Config tagName auth forwardLogs) =
   TestContainers.fromTag tagName
     & TestContainers.containerRequest
     & TestContainers.setExpose [5432]
