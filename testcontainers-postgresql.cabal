@@ -91,7 +91,6 @@ library
   other-modules:
     TestcontainersPostgresql.Configs.Auth
     TestcontainersPostgresql.Configs.Config
-    TestcontainersPostgresql.Configs.Distro
 
   build-depends:
     base >=4.11 && <5,

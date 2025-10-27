@@ -1,8 +1,8 @@
 module TestcontainersPostgresql
   ( Configs.Config.Config (..),
-    Configs.Distro.Distro (..),
     Configs.Auth.Auth (..),
     run,
+    setup,
   )
 where
 
@@ -12,7 +12,6 @@ import qualified TestContainers
 import qualified TestContainers.Hspec
 import qualified TestcontainersPostgresql.Configs.Auth as Configs.Auth
 import qualified TestcontainersPostgresql.Configs.Config as Configs.Config
-import qualified TestcontainersPostgresql.Configs.Distro as Configs.Distro
 import Prelude
 
 setup :: (TestContainers.MonadDocker m) => Configs.Config.Config -> m (Text, Int)

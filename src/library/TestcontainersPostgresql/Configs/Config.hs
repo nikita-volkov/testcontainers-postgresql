@@ -1,21 +1,22 @@
 module TestcontainersPostgresql.Configs.Config where
 
 import Data.Function
+import Data.Text (Text)
 import qualified Data.Text.Lazy as Text.Lazy
 import qualified TestContainers
 import qualified TestcontainersPostgresql.Configs.Auth as Configs.Auth
-import qualified TestcontainersPostgresql.Configs.Distro as Configs.Distro
 import Prelude
 
 data Config = Config
   { forwardLogs :: Bool,
-    distro :: Configs.Distro.Distro,
+    tagName :: Text,
     auth :: Configs.Auth.Auth
   }
 
 toContainerRequest :: Config -> TestContainers.ContainerRequest
-toContainerRequest (Config forwardLogs distro auth) =
-  Configs.Distro.toContainerRequest distro
+toContainerRequest (Config forwardLogs tagName auth) =
+  TestContainers.fromTag tagName
+    & TestContainers.containerRequest
     & TestContainers.setExpose [5432]
     & TestContainers.setWaitingFor waitUntilReady
     & Configs.Auth.updateContainerRequest auth
