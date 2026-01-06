@@ -22,9 +22,9 @@ import TestcontainersPostgresql.Configs.Auth
 main :: IO ()
 main = do
   let config = Config
-        { forwardLogs = True
-        , distro = Distro16  -- PostgreSQL 16
-        , auth = TrustAuth   -- Trust-based authentication
+        { tagName = "postgres:16" -- PostgreSQL 16.
+        , auth = TrustAuth        -- Authentication method that allows connections without a password.
+        , forwardLogs = True      -- Forward container logs to console. Useful for debugging.
         }
 
   run config $ \(host, port) -> do
